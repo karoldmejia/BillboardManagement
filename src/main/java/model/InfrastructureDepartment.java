@@ -7,6 +7,8 @@ import java.util.*;
 public class InfrastructureDepartment {
     public String BILLBOARD_FILE_NAME="C:\\Users\\KAROLD\\Documents\\uni\\apo2\\BillboardManagement\\src\\main\\java\\model\\data\\BillboardDataExported.csv";
     private String BILLBOARD_BINARY_FILE_NAME = "C:\\Users\\KAROLD\\Documents\\uni\\apo2\\BillboardManagement\\src\\main\\java\\model\\data\\BillboardDataExported.bin";
+    private String BILLBOARD_DANGER_REPORT = "C:\\Users\\KAROLD\\Documents\\uni\\apo2\\BillboardManagement\\src\\main\\java\\model\\data\\report.txt";
+
     ArrayList<Billboard> billboards;
 
 
@@ -15,7 +17,6 @@ public class InfrastructureDepartment {
         billboards = new ArrayList<Billboard>();
         importData();
     }
-
 
     //add a new billboard to list
     public void addBillboard(String billboardDetails){
@@ -57,12 +58,27 @@ public class InfrastructureDepartment {
         System.out.println("\nTOTAL: " + billboards.size() + " vallas");
     }
 
-        //creates or overwrite on a report.txt file. also shows it to the user
-    public void exportDangerousBillboardReport(){
+    //creates or overwrite on a report.txt file. also shows it to the user
+    public void exportDangerousBillboardReport() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(BILLBOARD_DANGER_REPORT))) {
+            writer.println("===========================");
+            writer.println("DANGEROUS BILLBOARD REPORT");
+            writer.println("===========================");
+            System.out.println("===========================\nDANGEROUS BILLBOARD REPORT\n===========================");
 
+            for (int i = 0; i < billboards.size(); i++) {
+                if (billboards.get(i).calculateArea() > 160000) {
+                    String dangerMessage = i + ". Billboard " + billboards.get(i).getBrand() +
+                            " with area " + billboards.get(i).calculateArea() + "cm2";
+                    writer.println(dangerMessage);
+                    System.out.println(dangerMessage);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    //dunno
     public void importData(){
         try (CSVReader csvReader = new CSVReader(new FileReader(BILLBOARD_FILE_NAME))) {
             String[] variables;
@@ -79,10 +95,4 @@ public class InfrastructureDepartment {
         }
 
     }
-
-    public String toString() {
-        return null;
-    }
-
-
 }

@@ -31,6 +31,7 @@ public class Main {
                     inDep.loadBillboards();
                     break;
                 case 3:
+                    inDep.exportDangerousBillboardReport();
                     break;
                 case 4:
                     System.out.print("Goodbye!");
