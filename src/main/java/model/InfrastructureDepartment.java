@@ -3,11 +3,10 @@ import com.opencsv.*;
 import java.io.*;
 import java.util.*;
 
-
 public class InfrastructureDepartment {
-    public String BILLBOARD_FILE_NAME="C:\\Users\\KAROLD\\Documents\\uni\\apo2\\BillboardManagement\\src\\main\\java\\model\\data\\BillboardDataExported.csv";
-    private String BILLBOARD_BINARY_FILE_NAME = "C:\\Users\\KAROLD\\Documents\\uni\\apo2\\BillboardManagement\\src\\main\\java\\model\\data\\BillboardDataExported.bin";
-    private String BILLBOARD_DANGER_REPORT = "C:\\Users\\KAROLD\\Documents\\uni\\apo2\\BillboardManagement\\src\\main\\java\\model\\data\\report.txt";
+    private String BILLBOARD_FILE_NAME="src/main/java/model/data/BillboardDataExported.csv";
+    private String BILLBOARD_BINARY_FILE_NAME = "src/main/java/model/data/BillboardDataExported.bin";
+    private String BILLBOARD_DANGER_REPORT = "src/main/java/model/data/report.txt";
 
     ArrayList<Billboard> billboards;
 

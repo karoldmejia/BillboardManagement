@@ -1,6 +1,7 @@
 package model;
 import java.io.*;
 
+
 public class Billboard implements Serializable{
     private double width;
     private double height;
